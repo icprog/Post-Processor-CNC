@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Helper;
+
+
 
 namespace Post_Processor_CNC
 {
@@ -70,13 +73,13 @@ namespace Post_Processor_CNC
             writer.Write("DEF REAL GB\r\nDEF REAL ZZ\r\n");
             writer.WriteLine("GB=0");
             writer.Write("M3\r\nM8\r\n"); //Включение оборотов круга и подач охлаждения
-
+            
             //Размер стороны
             R21 = Convert.ToDouble(numericSideSize.Value);
             writer.WriteLine("R21=" + Math.Round(R21,3));
 
             //Радиус
-            R11 = ToRadians(int.Parse(comboBoxPlates.SelectedItem.ToString()));
+            R11 = MathHelper.ToRadians(InputHelper.GetCBDouble(comboBoxPlates));
             R2 = R21 / Math.Sin(R11);
             writer.WriteLine("R2=" + Math.Round(R2,3));
 
@@ -99,11 +102,6 @@ namespace Post_Processor_CNC
             writer.Close();
             fs.Close();
             System.Diagnostics.Process.Start(path);
-        }
-
-        private double ToRadians(int degrees)
-        {
-            return (Math.PI / 180) * degrees;
-        }
+        }        
     }
 }
