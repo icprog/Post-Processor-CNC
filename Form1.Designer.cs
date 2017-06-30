@@ -37,24 +37,24 @@
             this.comboBoxDiscrete = new System.Windows.Forms.ComboBox();
             this.numericPasses = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericAllowance = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.buttonGenerateCP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericSideSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPasses)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericAllowance)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxPlates
@@ -87,6 +87,11 @@
             this.numericSideSize.Name = "numericSideSize";
             this.numericSideSize.Size = new System.Drawing.Size(48, 20);
             this.numericSideSize.TabIndex = 2;
+            this.numericSideSize.Value = new decimal(new int[] {
+            567,
+            0,
+            0,
+            131072});
             // 
             // comboBoxRadius
             // 
@@ -148,24 +153,24 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Число проходов";
             // 
-            // numericUpDown1
+            // numericAllowance
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.numericAllowance.DecimalPlaces = 2;
+            this.numericAllowance.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(98, 134);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numericAllowance.Location = new System.Drawing.Point(98, 134);
+            this.numericAllowance.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
-            this.numericUpDown1.TabIndex = 10;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numericAllowance.Name = "numericAllowance";
+            this.numericAllowance.Size = new System.Drawing.Size(48, 20);
+            this.numericAllowance.TabIndex = 10;
+            this.numericAllowance.Value = new decimal(new int[] {
             3,
             0,
             0,
@@ -194,80 +199,6 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Начальные координаты";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(167, 28);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(96, 17);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Выхаживание";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "X:";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.DecimalPlaces = 3;
-            this.numericUpDown2.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            196608});
-            this.numericUpDown2.Location = new System.Drawing.Point(29, 14);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(114, 20);
-            this.numericUpDown2.TabIndex = 13;
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.DecimalPlaces = 3;
-            this.numericUpDown3.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            196608});
-            this.numericUpDown3.Location = new System.Drawing.Point(29, 40);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(114, 20);
-            this.numericUpDown3.TabIndex = 14;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Z:";
             // 
             // numericUpDown4
             // 
@@ -301,6 +232,80 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "A:";
             // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.DecimalPlaces = 3;
+            this.numericUpDown3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.numericUpDown3.Location = new System.Drawing.Point(29, 40);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(114, 20);
+            this.numericUpDown3.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Z:";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.DecimalPlaces = 3;
+            this.numericUpDown2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.numericUpDown2.Location = new System.Drawing.Point(29, 14);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(114, 20);
+            this.numericUpDown2.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "X:";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(167, 28);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(96, 17);
+            this.checkBox1.TabIndex = 12;
+            this.checkBox1.Text = "Выхаживание";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // buttonGenerateCP
             // 
             this.buttonGenerateCP.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -310,6 +315,7 @@
             this.buttonGenerateCP.TabIndex = 13;
             this.buttonGenerateCP.Text = "Создать УП";
             this.buttonGenerateCP.UseVisualStyleBackColor = true;
+            this.buttonGenerateCP.Click += new System.EventHandler(this.buttonGenerateCP_Click);
             // 
             // Form1
             // 
@@ -319,7 +325,7 @@
             this.Controls.Add(this.buttonGenerateCP);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numericAllowance);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numericPasses);
             this.Controls.Add(this.label4);
@@ -334,12 +340,12 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericSideSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPasses)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericAllowance)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,7 +362,7 @@
         private System.Windows.Forms.ComboBox comboBoxDiscrete;
         private System.Windows.Forms.NumericUpDown numericPasses;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericAllowance;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBox1;
