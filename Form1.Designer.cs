@@ -222,6 +222,11 @@
             this.numericA.Name = "numericA";
             this.numericA.Size = new System.Drawing.Size(114, 20);
             this.numericA.TabIndex = 16;
+            this.numericA.Value = new decimal(new int[] {
+            91234546,
+            0,
+            0,
+            458752});
             // 
             // label8
             // 
@@ -254,6 +259,11 @@
             this.numericZ.Name = "numericZ";
             this.numericZ.Size = new System.Drawing.Size(114, 20);
             this.numericZ.TabIndex = 14;
+            this.numericZ.Value = new decimal(new int[] {
+            34676789,
+            0,
+            0,
+            393216});
             // 
             // label7
             // 
@@ -286,6 +296,11 @@
             this.numericX.Name = "numericX";
             this.numericX.Size = new System.Drawing.Size(114, 20);
             this.numericX.TabIndex = 13;
+            this.numericX.Value = new decimal(new int[] {
+            234,
+            0,
+            0,
+            196608});
             // 
             // label6
             // 

@@ -95,7 +95,7 @@ namespace CNC
             CNC.FeedRate(9000);
             CNC.Inline(false);
 
-            //CNC.While("gb<r9");
+            CNC.While("gb<r9");
             
             //CNC.MCode(new object[] { 5, 9, 30 });                       
             //Close streams

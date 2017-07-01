@@ -43,7 +43,10 @@ namespace CNC
             if (inline)
                 ending = " ";
             else
+            {
                 ending = "\r\n";
+                Write(String.Empty);
+            }
         }
         /// <summary>
         /// Define REAL variable
@@ -128,7 +131,7 @@ namespace CNC
         /// </summary>
         public void While(object condition)
         {
-            Write("WHILE" + FormatString(condition.ToString()));
+            Write("WHILE " + FormatString(condition.ToString()));
         }
 
         /// <summary>
@@ -145,7 +148,7 @@ namespace CNC
         /// <param name="str"></param>
         public void Echo(object str)
         {
-            Stream.Write((str.ToString()).ToUpper());
+            Write((str.ToString()).ToUpper());
         }
 
         /// <summary>
