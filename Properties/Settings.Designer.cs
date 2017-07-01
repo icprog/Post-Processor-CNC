@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Post_Processor_CNC.Properties
+namespace CNC.Properties
 {
 
 

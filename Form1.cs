@@ -12,7 +12,7 @@ using Helper;
 
 
 
-namespace Post_Processor_CNC
+namespace CNC
 {
     public partial class Form1 : Form
     {
@@ -67,37 +67,37 @@ namespace Post_Processor_CNC
 
         private void buttonGenerateCP_Click(object sender, EventArgs e)
         {
-            double R21, R2, R11, R7, R9, R91;
             FileStream fs = new FileStream(path, FileMode.Create);
             StreamWriter writer = new StreamWriter(fs);
-            writer.Write("DEF REAL GB\r\nDEF REAL ZZ\r\n");
-            writer.WriteLine("GB=0");
-            writer.Write("M3\r\nM8\r\n"); //Включение оборотов круга и подач охлаждения
+            ShortcutCNC CNC = new ShortcutCNC(writer);
+
+            CNC.DefReal("GB");
+            CNC.DefReal("ZZ");
+            CNC.Append("GB", 0);
+            CNC.MCode(3);
+            CNC.MCode(8);
+            CNC.Append("R11", InputHelper.GetCBDouble(comboBoxPlates)); 
+            CNC.Append("R21", numericSideSize.Value);
+            CNC.Append("R2", "R21/(SIN(R11))");
+            CNC.Append("R3", InputHelper.GetCBDouble(comboBoxRadius));
+            CNC.Append("r4", "r2*(cos (r11/2))*(sin (r11/2)-r34)");
+            CNC.Append("r5", "r4/ (tan (r11/2))");
+            CNC.Append("r7", InputHelper.GetCBDouble(comboBoxDiscrete));
+            CNC.Append("r9", numericPasses.Value);
+            CNC.Append("r91", numericAllowance.Value);
+
+            CNC.Inline(true);
+            CNC.GCode(90);
+            CNC.GCode(1);
+            CNC.Echo(numericX.Value);
+            CNC.Echo(numericZ.Value);
+            CNC.Echo(numericA.Value);
+            CNC.FeedRate(9000);
+            CNC.Inline(false);
+
+            //CNC.While("gb<r9");
             
-            //Размер стороны
-            R21 = Convert.ToDouble(numericSideSize.Value);
-            writer.WriteLine("R21=" + Math.Round(R21,3));
-
-            //Радиус
-            R11 = MathHelper.ToRadians(InputHelper.GetCBDouble(comboBoxPlates));
-            R2 = R21 / Math.Sin(R11);
-            writer.WriteLine("R2=" + Math.Round(R2,3));
-
-            //r4 & r5
-            String r4_str = "R4=r2*(cos(r11/2))*(sin(r11/2)-r3";
-            writer.WriteLine(r4_str.ToUpper());
-            String r5_str = "R5=r4/(tan(r11/2))";
-            writer.WriteLine(r5_str.ToUpper());
-
-            //Дискретность
-            R7 = (double)comboBoxDiscrete.SelectedItem;
-            writer.WriteLine("R7="+Math.Round(R7,3));
-
-            //Число проходов и припуск
-            R9 = (double)numericPasses.Value;
-            R91 = (double)numericAllowance.Value;
-            writer.Write("R9=" + Math.Round(R9,3) + "\r\nR91=" + Math.Round(R91,3) + "\r\n");
-
+            //CNC.MCode(new object[] { 5, 9, 30 });                       
             //Close streams
             writer.Close();
             fs.Close();
