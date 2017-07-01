@@ -95,9 +95,69 @@ namespace CNC
             CNC.FeedRate(9000);
             CNC.Inline(false);
 
-            CNC.While("gb<r9");
-            
-            //CNC.MCode(new object[] { 5, 9, 30 });                       
+            if (!checkBox1.Checked)
+            {
+                CNC.While("gb<r9");
+
+                CNC.Inline(true);
+                CNC.GCode(1);
+                CNC.Append("z", "-r91");
+            }
+            else
+            {
+                CNC.While("gb<1");
+
+                CNC.Inline(true);
+                CNC.GCode(1);
+                CNC.Append("z", 0.005);
+            }
+            CNC.FeedRate(2000);
+            CNC.Inline(false);
+
+            CNC.Append("ZZ", 0);
+            CNC.While("zz<2");
+
+            CNC.Inline(true);
+            CNC.GCode(1);
+            CNC.XCode(15);
+            CNC.FeedRate(1000);
+            CNC.Inline(false);
+
+            CNC.Append("r1", 1);
+            CNC.Append("r8", 0);
+            CNC.While("r1<=100");
+            CNC.Append("r6", "R4-(SQRT(R4*R4+R5*R5))*(SIN(R11/2))");
+
+            CNC.Inline(true);
+            CNC.GCode(1);
+            CNC.Append("z", "-(R6-R8)");
+            CNC.Append("a", "r7");
+            CNC.FeedRate(100);
+            CNC.Inline(false);
+
+            CNC.Append("r8", "r6");
+            CNC.Append("r1", "r1+r7");
+            CNC.Append("r6", 0);
+            CNC.EndWhile();
+
+            CNC.Inline(true);
+            CNC.GCode(1);
+            CNC.XCode(15);
+            CNC.FeedRate(1000);
+            CNC.Inline(false);
+
+            CNC.Inline(true);
+            CNC.GCode(0);
+            CNC.Echo("a80");
+            CNC.Inline(false);
+
+            CNC.Append("zz", "zz+1");
+            CNC.EndWhile();
+            CNC.Append("gb", "gb+1");
+            CNC.EndWhile();
+            CNC.Append("gb", 0);
+
+            CNC.MCode(new object[] { 5, 9, 30 });                       
             //Close streams
             writer.Close();
             fs.Close();

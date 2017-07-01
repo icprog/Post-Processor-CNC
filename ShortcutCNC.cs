@@ -99,7 +99,7 @@ namespace CNC
         }
 
         /// <summary>
-        /// Writes G-code in format "M+'number'"
+        /// Writes G-code in format "G+'number'"
         /// </summary>
         public void GCode(object number)
         {
@@ -107,7 +107,7 @@ namespace CNC
         }
 
         /// <summary>
-        /// Writes series of M-codes
+        /// Writes series of G-codes
         /// </summary>
         /// <param name="number"></param>
         public void GCode(object[] number)
@@ -116,6 +116,14 @@ namespace CNC
             for (int i = 0; i < number.Length; i++)
                 buf += "G" + number[i].ToString() + " ";
             Write(buf);
+        }
+
+        /// <summary>
+        /// Writes X-code in format "X+'number'"
+        /// </summary>
+        public void XCode(object number)
+        {
+            Write("X" + number.ToString());
         }
 
         /// <summary>
@@ -137,7 +145,7 @@ namespace CNC
         /// <summary>
         /// Ends while cycle
         /// </summary>
-        public void EndWhile(object condition)
+        public void EndWhile()
         {
             Write("ENDWHILE");
         }

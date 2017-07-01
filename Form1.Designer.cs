@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.comboBoxPlates = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numericSideSize = new System.Windows.Forms.NumericUpDown();
@@ -63,7 +64,7 @@
             this.comboBoxPlates.FormattingEnabled = true;
             this.comboBoxPlates.Location = new System.Drawing.Point(0, 0);
             this.comboBoxPlates.Name = "comboBoxPlates";
-            this.comboBoxPlates.Size = new System.Drawing.Size(284, 21);
+            this.comboBoxPlates.Size = new System.Drawing.Size(350, 21);
             this.comboBoxPlates.TabIndex = 0;
             // 
             // label1
@@ -85,7 +86,7 @@
             196608});
             this.numericSideSize.Location = new System.Drawing.Point(98, 26);
             this.numericSideSize.Name = "numericSideSize";
-            this.numericSideSize.Size = new System.Drawing.Size(48, 20);
+            this.numericSideSize.Size = new System.Drawing.Size(72, 20);
             this.numericSideSize.TabIndex = 2;
             this.numericSideSize.Value = new decimal(new int[] {
             567,
@@ -98,7 +99,7 @@
             this.comboBoxRadius.FormattingEnabled = true;
             this.comboBoxRadius.Location = new System.Drawing.Point(98, 53);
             this.comboBoxRadius.Name = "comboBoxRadius";
-            this.comboBoxRadius.Size = new System.Drawing.Size(48, 21);
+            this.comboBoxRadius.Size = new System.Drawing.Size(72, 21);
             this.comboBoxRadius.TabIndex = 3;
             // 
             // label2
@@ -113,7 +114,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 84);
+            this.label3.Location = new System.Drawing.Point(176, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 6;
@@ -122,21 +123,21 @@
             // comboBoxDiscrete
             // 
             this.comboBoxDiscrete.FormattingEnabled = true;
-            this.comboBoxDiscrete.Location = new System.Drawing.Point(98, 81);
+            this.comboBoxDiscrete.Location = new System.Drawing.Point(274, 25);
             this.comboBoxDiscrete.Name = "comboBoxDiscrete";
-            this.comboBoxDiscrete.Size = new System.Drawing.Size(48, 21);
+            this.comboBoxDiscrete.Size = new System.Drawing.Size(72, 21);
             this.comboBoxDiscrete.TabIndex = 5;
             // 
             // numericPasses
             // 
-            this.numericPasses.Location = new System.Drawing.Point(98, 108);
+            this.numericPasses.Location = new System.Drawing.Point(98, 80);
             this.numericPasses.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numericPasses.Name = "numericPasses";
-            this.numericPasses.Size = new System.Drawing.Size(48, 20);
+            this.numericPasses.Size = new System.Drawing.Size(72, 20);
             this.numericPasses.TabIndex = 8;
             this.numericPasses.Value = new decimal(new int[] {
             1,
@@ -147,7 +148,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 110);
+            this.label4.Location = new System.Drawing.Point(0, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 13);
             this.label4.TabIndex = 7;
@@ -161,14 +162,14 @@
             0,
             0,
             131072});
-            this.numericAllowance.Location = new System.Drawing.Point(98, 134);
+            this.numericAllowance.Location = new System.Drawing.Point(274, 54);
             this.numericAllowance.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numericAllowance.Name = "numericAllowance";
-            this.numericAllowance.Size = new System.Drawing.Size(48, 20);
+            this.numericAllowance.Size = new System.Drawing.Size(72, 20);
             this.numericAllowance.TabIndex = 10;
             this.numericAllowance.Value = new decimal(new int[] {
             3,
@@ -179,7 +180,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0, 136);
+            this.label5.Location = new System.Drawing.Point(176, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 9;
@@ -193,9 +194,9 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.numericX);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(3, 162);
+            this.groupBox1.Location = new System.Drawing.Point(3, 116);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(269, 101);
+            this.groupBox1.Size = new System.Drawing.Size(167, 101);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Начальные координаты";
@@ -314,7 +315,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(167, 28);
+            this.checkBox1.Location = new System.Drawing.Point(179, 81);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(96, 17);
             this.checkBox1.TabIndex = 12;
@@ -324,9 +325,9 @@
             // buttonGenerateCP
             // 
             this.buttonGenerateCP.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonGenerateCP.Location = new System.Drawing.Point(0, 267);
+            this.buttonGenerateCP.Location = new System.Drawing.Point(0, 224);
             this.buttonGenerateCP.Name = "buttonGenerateCP";
-            this.buttonGenerateCP.Size = new System.Drawing.Size(284, 30);
+            this.buttonGenerateCP.Size = new System.Drawing.Size(350, 30);
             this.buttonGenerateCP.TabIndex = 13;
             this.buttonGenerateCP.Text = "Создать УП";
             this.buttonGenerateCP.UseVisualStyleBackColor = true;
@@ -336,7 +337,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 297);
+            this.ClientSize = new System.Drawing.Size(350, 254);
             this.Controls.Add(this.buttonGenerateCP);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.groupBox1);
@@ -351,8 +352,11 @@
             this.Controls.Add(this.numericSideSize);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxPlates);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Пост-процессор ЧПУ";
             ((System.ComponentModel.ISupportInitialize)(this.numericSideSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPasses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericAllowance)).EndInit();
