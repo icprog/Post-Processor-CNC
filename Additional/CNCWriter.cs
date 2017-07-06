@@ -34,6 +34,12 @@ namespace CNC
             ending = "\r\n";
         }
 
+        public CNCWriter(String path)
+        {
+            Stream = new StreamWriter(path);
+            ending = "\r\n";
+        }
+
         /// <summary>
         /// After set to 'true' all commands will no longer switch to the next string until it will be setted to 'false'
         /// </summary>
@@ -118,14 +124,7 @@ namespace CNC
             Write(buf);
         }
 
-        /// <summary>
-        /// Writes X-code in format "X+'number'"
-        /// </summary>
-        public void XCode(object number)
-        {
-            Write("X" + number.ToString());
-        }
-
+        
         /// <summary>
         /// Specifies feedrate
         /// </summary>
@@ -159,6 +158,9 @@ namespace CNC
             Write((str.ToString()).ToUpper());
         }
 
+        public void 
+        //---------------------------------------------------------------Private
+
         /// <summary>
         /// Casting value to double and rounds it to 3 digits
         /// </summary>
@@ -187,5 +189,6 @@ namespace CNC
         {
             Stream.Write(str + ending);
         }
+
     }
 }

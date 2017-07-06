@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CNC;
 
-namespace Post_Processor_CNC
+namespace BluePrints
 {
     class OCN : Plate
     {
@@ -13,10 +13,12 @@ namespace Post_Processor_CNC
         /// OCN plate instance
         /// </summary>
         /// <param name="form">Reference on the form containing common plate parameters</param>
-        public OCN(ref Form1 form)
-            : base(ref form)
+        public OCN(PlateForm form)
+            : base(form)
         {
+            VertexAngle = 80m;
             SideCount = 2;
+            Name = "OCN (731)";
         }
     }
 }

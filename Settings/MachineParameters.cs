@@ -12,6 +12,6 @@ namespace Post_Processor_CNC
         public MachineParameters(bool reversed)
         {
             isAxisReversed = reversed;
-        }
+        }        
     }
 }

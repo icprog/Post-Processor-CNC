@@ -9,26 +9,75 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Helper;
+using BluePrints;
 
 
 
 namespace CNC
 {
-    public partial class Form1 : Form
+    public partial class PlateForm : Form
     {
-        String path = "test.txt";
-        /// <summary>
-        /// Main combo box elements (Plates)
-        /// </summary>
-        List<String> plateList = new List<String>()
+        //Parameters
+        public decimal SideSize
         {
-            "80",
-            "100",
-            "60"
-        };
-
+            get
+            {
+                return Convert.ToDecimal(numSideSize.Value);
+            }
+        }
+        public decimal Radius
+        {
+            get
+            {
+                return Convert.ToDecimal(cbRadius.SelectedItem);
+            }
+        }
+        public decimal OverMeasure
+        {
+            get
+            {
+                return Convert.ToDecimal(numAllowance.Value);
+            }
+        }
+        public decimal PlateExit
+        {
+            get
+            {
+                return Convert.ToDecimal(numPlateExit.Value);
+            }
+        }
+        public decimal Passes
+        {
+            get
+            {
+                return Convert.ToDecimal(numPasses.Value);
+            }
+        }
+        public decimal Discreteness
+        {
+            get
+            {
+                return Convert.ToDecimal(cbDiscrete.SelectedItem);
+            }
+        }
+        public bool Finishing
+        {
+            get
+            {
+                return checkFinishing.Checked;
+            }
+        }
+        
+        //Path
+        String path = "test.txt";
+        
+        //Lists
         /// <summary>
-        /// Discrete items
+        /// List of plate objects 
+        /// </summary>
+        List<Plate> plateList = new List<Plate>();        
+        /// <summary>
+        /// Discrete combobox items
         /// </summary>
         List<double> discreteList = new List<double>()
         {
@@ -36,9 +85,8 @@ namespace CNC
             0.5,
             1.0
         };
-
         /// <summary>
-        /// Radius items
+        /// Radius combobox items
         /// </summary>
         List<double> radiusList = new List<double>()
         {
@@ -49,20 +97,23 @@ namespace CNC
             1.5
         };
 
-        public Form1()
+        public PlateForm()
         {
             InitializeComponent();
             //Set the collections with items and styles for comboBoxes
             comboBoxPlates.DataSource = plateList;
-            comboBoxRadius.DataSource = radiusList;
-            comboBoxDiscrete.DataSource = discreteList;
-            comboBoxDiscrete.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbRadius.DataSource = radiusList;
+            cbDiscrete.DataSource = discreteList;
+            cbDiscrete.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPlates.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxRadius.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbRadius.DropDownStyle = ComboBoxStyle.DropDownList;
             //Set the initial values of combo boxes
             comboBoxPlates.SelectedIndex = 0;
-            comboBoxRadius.SelectedIndex = radiusList.IndexOf(0.8);
-            comboBoxDiscrete.SelectedIndex = discreteList.IndexOf(1);
+            cbRadius.SelectedIndex = radiusList.IndexOf(0.8);
+            cbDiscrete.SelectedIndex = discreteList.IndexOf(1);
+
+            //Create instances for plates
+            plateList.Add(new OCN(this));
         }
 
         private void buttonGenerateCP_Click(object sender, EventArgs e)
@@ -71,20 +122,16 @@ namespace CNC
             StreamWriter writer = new StreamWriter(fs);
             CNCWriter CNC = new CNCWriter(writer);
 
-            CNC.DefReal("GB");
-            CNC.DefReal("ZZ");
-            CNC.Append("GB", 0);
-            CNC.MCode(3);
-            CNC.MCode(8);
+            
             CNC.Append("R11", InputHelper.GetCBDouble(comboBoxPlates)); 
-            CNC.Append("R21", numericSideSize.Value);
+            CNC.Append("R21", numSideSize.Value);
             CNC.Append("R2", "R21/(SIN(R11))");
-            CNC.Append("R3", InputHelper.GetCBDouble(comboBoxRadius));
+            CNC.Append("R3", InputHelper.GetCBDouble(cbRadius));
             CNC.Append("r4", "r2*(cos (r11/2))*(sin (r11/2)-r34)");
             CNC.Append("r5", "r4/ (tan (r11/2))");
-            CNC.Append("r7", InputHelper.GetCBDouble(comboBoxDiscrete));
-            CNC.Append("r9", numericPasses.Value);
-            CNC.Append("r91", numericAllowance.Value);
+            CNC.Append("r7", InputHelper.GetCBDouble(cbDiscrete));
+            CNC.Append("r9", numPasses.Value);
+            CNC.Append("r91", numAllowance.Value);
 
             CNC.Inline(true);
             CNC.GCode(90);
@@ -95,7 +142,7 @@ namespace CNC
             CNC.FeedRate(9000);
             CNC.Inline(false);
 
-            if (!checkBox1.Checked)
+            if (!checkFinishing.Checked)
             {
                 CNC.While("gb<r9");
 
@@ -162,6 +209,6 @@ namespace CNC
             writer.Close();
             fs.Close();
             System.Diagnostics.Process.Start(path);
-        }        
+        }
     }
 }
