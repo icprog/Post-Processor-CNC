@@ -5,7 +5,7 @@ namespace Helper
     /// <summary>
     /// Contains math methods which I found useful during my work
     /// </summary>
-    public static class MathHelper : Object
+    public static class MathHelper
     {
         /// <summary>
         /// Converts angle from degrees to radians

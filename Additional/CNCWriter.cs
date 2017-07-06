@@ -10,7 +10,7 @@ namespace CNC
     /// <summary>
     /// Class which realises meta-language to simplify representation of G Code in C#
     /// </summary>
-    public class ShortcutCNC
+    public class CNCWriter
     {
         /// <summary>
         /// Stream where meta-codes will be written
@@ -28,7 +28,7 @@ namespace CNC
             }
         }
                         
-        public ShortcutCNC(StreamWriter stream)
+        public CNCWriter(StreamWriter stream)
         {
             Stream = stream;
             ending = "\r\n";

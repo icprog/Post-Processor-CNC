@@ -49,6 +49,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.buttonGenerateCP = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.параметрыУстановкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiInvertCoordinates = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericSideSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPasses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericAllowance)).BeginInit();
@@ -56,13 +59,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxPlates
             // 
-            this.comboBoxPlates.Dock = System.Windows.Forms.DockStyle.Top;
             this.comboBoxPlates.FormattingEnabled = true;
-            this.comboBoxPlates.Location = new System.Drawing.Point(0, 0);
+            this.comboBoxPlates.Location = new System.Drawing.Point(0, 26);
             this.comboBoxPlates.Name = "comboBoxPlates";
             this.comboBoxPlates.Size = new System.Drawing.Size(350, 21);
             this.comboBoxPlates.TabIndex = 0;
@@ -70,7 +73,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 28);
+            this.label1.Location = new System.Drawing.Point(-3, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 1;
@@ -84,7 +87,7 @@
             0,
             0,
             196608});
-            this.numericSideSize.Location = new System.Drawing.Point(98, 26);
+            this.numericSideSize.Location = new System.Drawing.Point(95, 65);
             this.numericSideSize.Name = "numericSideSize";
             this.numericSideSize.Size = new System.Drawing.Size(72, 20);
             this.numericSideSize.TabIndex = 2;
@@ -97,7 +100,7 @@
             // comboBoxRadius
             // 
             this.comboBoxRadius.FormattingEnabled = true;
-            this.comboBoxRadius.Location = new System.Drawing.Point(98, 53);
+            this.comboBoxRadius.Location = new System.Drawing.Point(95, 92);
             this.comboBoxRadius.Name = "comboBoxRadius";
             this.comboBoxRadius.Size = new System.Drawing.Size(72, 21);
             this.comboBoxRadius.TabIndex = 3;
@@ -105,7 +108,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 56);
+            this.label2.Location = new System.Drawing.Point(-3, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 4;
@@ -114,7 +117,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(176, 28);
+            this.label3.Location = new System.Drawing.Point(173, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 6;
@@ -123,14 +126,14 @@
             // comboBoxDiscrete
             // 
             this.comboBoxDiscrete.FormattingEnabled = true;
-            this.comboBoxDiscrete.Location = new System.Drawing.Point(274, 25);
+            this.comboBoxDiscrete.Location = new System.Drawing.Point(271, 64);
             this.comboBoxDiscrete.Name = "comboBoxDiscrete";
             this.comboBoxDiscrete.Size = new System.Drawing.Size(72, 21);
             this.comboBoxDiscrete.TabIndex = 5;
             // 
             // numericPasses
             // 
-            this.numericPasses.Location = new System.Drawing.Point(98, 80);
+            this.numericPasses.Location = new System.Drawing.Point(95, 119);
             this.numericPasses.Minimum = new decimal(new int[] {
             1,
             0,
@@ -148,7 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 82);
+            this.label4.Location = new System.Drawing.Point(-3, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 13);
             this.label4.TabIndex = 7;
@@ -162,7 +165,7 @@
             0,
             0,
             131072});
-            this.numericAllowance.Location = new System.Drawing.Point(274, 54);
+            this.numericAllowance.Location = new System.Drawing.Point(271, 93);
             this.numericAllowance.Maximum = new decimal(new int[] {
             1,
             0,
@@ -180,7 +183,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(176, 56);
+            this.label5.Location = new System.Drawing.Point(173, 95);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 9;
@@ -194,7 +197,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.numericX);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(3, 116);
+            this.groupBox1.Location = new System.Drawing.Point(0, 155);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(167, 101);
             this.groupBox1.TabIndex = 11;
@@ -315,7 +318,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(179, 81);
+            this.checkBox1.Location = new System.Drawing.Point(176, 120);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(96, 17);
             this.checkBox1.TabIndex = 12;
@@ -325,19 +328,47 @@
             // buttonGenerateCP
             // 
             this.buttonGenerateCP.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonGenerateCP.Location = new System.Drawing.Point(0, 224);
+            this.buttonGenerateCP.Location = new System.Drawing.Point(0, 390);
             this.buttonGenerateCP.Name = "buttonGenerateCP";
-            this.buttonGenerateCP.Size = new System.Drawing.Size(350, 30);
+            this.buttonGenerateCP.Size = new System.Drawing.Size(578, 30);
             this.buttonGenerateCP.TabIndex = 13;
             this.buttonGenerateCP.Text = "Создать УП";
             this.buttonGenerateCP.UseVisualStyleBackColor = true;
             this.buttonGenerateCP.Click += new System.EventHandler(this.buttonGenerateCP_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.параметрыУстановкиToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(578, 24);
+            this.menuStrip1.TabIndex = 14;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // параметрыУстановкиToolStripMenuItem
+            // 
+            this.параметрыУстановкиToolStripMenuItem.Checked = true;
+            this.параметрыУстановкиToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.параметрыУстановкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiInvertCoordinates});
+            this.параметрыУстановкиToolStripMenuItem.Name = "параметрыУстановкиToolStripMenuItem";
+            this.параметрыУстановкиToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
+            this.параметрыУстановкиToolStripMenuItem.Text = "Параметры установки";
+            // 
+            // tsmiInvertCoordinates
+            // 
+            this.tsmiInvertCoordinates.Checked = true;
+            this.tsmiInvertCoordinates.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiInvertCoordinates.Name = "tsmiInvertCoordinates";
+            this.tsmiInvertCoordinates.Size = new System.Drawing.Size(191, 22);
+            this.tsmiInvertCoordinates.Text = "Инвертированная СК";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 254);
+            this.ClientSize = new System.Drawing.Size(578, 420);
             this.Controls.Add(this.buttonGenerateCP);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.groupBox1);
@@ -352,8 +383,10 @@
             this.Controls.Add(this.numericSideSize);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxPlates);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Пост-процессор ЧПУ";
@@ -365,6 +398,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,6 +427,9 @@
         private System.Windows.Forms.NumericUpDown numericX;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonGenerateCP;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem параметрыУстановкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiInvertCoordinates;
     }
 }
 

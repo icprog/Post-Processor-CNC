@@ -69,7 +69,7 @@ namespace CNC
         {
             FileStream fs = new FileStream(path, FileMode.Create);
             StreamWriter writer = new StreamWriter(fs);
-            ShortcutCNC CNC = new ShortcutCNC(writer);
+            CNCWriter CNC = new CNCWriter(writer);
 
             CNC.DefReal("GB");
             CNC.DefReal("ZZ");
