@@ -15,8 +15,8 @@ namespace CNC
         /// <summary>
         /// Stream where meta-codes will be written
         /// </summary>
-        private StreamWriter Stream;
-        private String ending;
+        private StreamWriter _stream;
+        private String _ending;
         /// <summary>
         /// Defines will the command switch to the next string after being writed
         /// </summary>
@@ -24,20 +24,20 @@ namespace CNC
         {
             get
             {
-                return (ending != " ");
+                return (_ending != " ");
             }
         }
                         
         public CNCWriter(StreamWriter stream)
         {
-            Stream = stream;
-            ending = "\r\n";
+            _stream = stream;
+            _ending = "\r\n";
         }
 
         public CNCWriter(String path)
         {
-            Stream = new StreamWriter(path);
-            ending = "\r\n";
+            _stream = new StreamWriter(path);
+            _ending = "\r\n";
         }
 
         /// <summary>
@@ -47,10 +47,10 @@ namespace CNC
         public void Inline(bool inline)
         {
             if (inline)
-                ending = " ";
+                _ending = " ";
             else
             {
-                ending = "\r\n";
+                _ending = "\r\n";
                 Write(String.Empty);
             }
         }
@@ -82,6 +82,16 @@ namespace CNC
         {
             value = FormatValue(value);
             Write(var.ToUpper() + "=" + value.ToString());
+        }
+
+        /// <summary>
+        /// Increments specified variable
+        /// </summary>
+        /// <param name="var">Variable name</param>
+        /// <param name="value">Value to append (auto-formatted)</param>
+        public void Increment(String var)
+        {
+            Write(var.ToUpper() + "=" + var.ToUpper() + "1");
         }
 
         /// <summary>
@@ -123,8 +133,7 @@ namespace CNC
                 buf += "G" + number[i].ToString() + " ";
             Write(buf);
         }
-
-        
+                
         /// <summary>
         /// Specifies feedrate
         /// </summary>
@@ -134,9 +143,60 @@ namespace CNC
         }
 
         /// <summary>
+        /// Literally is the realisation the code like "G1 X Z A F%rate%"
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
+        /// <param name="a"></param>
+        /// <param name="rate"></param>
+        public void Move(double x, double z, double a, int rate)
+        {
+            Inline(true);
+            GCode(1);
+            Append("X", x);
+            Append("Z", z);
+            Append("A", a);
+            FeedRate(rate);
+            Inline(false);
+        }
+
+        /// <summary>
+        /// Literally is the realisation the code like "G1 Z F%rate%"
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
+        /// <param name="a"></param>
+        /// <param name="rate"></param>
+        public void Move(string c1, double v1, int rate)
+        {
+            Inline(true);
+            GCode(1);
+            Append(c1, v1);
+            FeedRate(rate);
+            Inline(false);
+        }
+
+        /// <summary>
+        /// Literally is the realisation the code like "G1 Z A F%rate%"
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
+        /// <param name="a"></param>
+        /// <param name="rate"></param>
+        public void Move(string c1, double v1, string c2, double v2, int rate)
+        {
+            Inline(true);
+            GCode(1);
+            Append(c1, v1);
+            Append(c2, v2);
+            FeedRate(rate);
+            Inline(false);
+        }
+
+        /// <summary>
         /// Specifies while cycle with condition
         /// </summary>
-        public void While(object condition)
+        public void While(String condition)
         {
             Write("WHILE " + FormatString(condition.ToString()));
         }
@@ -158,7 +218,13 @@ namespace CNC
             Write((str.ToString()).ToUpper());
         }
 
-        public void 
+        /// <summary>
+        /// End writing and close the stream
+        /// </summary>
+        public void Close()
+        {
+            _stream.Close();
+        }
         //---------------------------------------------------------------Private
 
         /// <summary>
@@ -187,7 +253,7 @@ namespace CNC
         /// <param name="str">String to write</param>
         private void Write(String str)
         {
-            Stream.Write(str + ending);
+            _stream.Write(str + _ending);
         }
 
     }

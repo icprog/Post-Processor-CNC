@@ -57,9 +57,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.tbRadius = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numSideSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPasses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAllowance)).BeginInit();
@@ -80,6 +80,7 @@
             this.comboBoxPlates.Name = "comboBoxPlates";
             this.comboBoxPlates.Size = new System.Drawing.Size(424, 21);
             this.comboBoxPlates.TabIndex = 0;
+            this.comboBoxPlates.SelectedIndexChanged += new System.EventHandler(this.plateChanged);
             // 
             // label1
             // 
@@ -448,10 +449,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Свойства пластины";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(182, 16);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(11, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "°";
+            // 
             // tbRadius
             // 
             this.tbRadius.Enabled = false;
-            this.tbRadius.Location = new System.Drawing.Point(140, 13);
+            this.tbRadius.Location = new System.Drawing.Point(138, 13);
             this.tbRadius.Name = "tbRadius";
             this.tbRadius.Size = new System.Drawing.Size(38, 20);
             this.tbRadius.TabIndex = 21;
@@ -461,18 +471,9 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(6, 16);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(136, 13);
+            this.label15.Size = new System.Drawing.Size(100, 13);
             this.label15.TabIndex = 22;
-            this.label15.Text = "Радиус угла при вершине";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(182, 16);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(11, 13);
-            this.label16.TabIndex = 20;
-            this.label16.Text = "°";
+            this.label15.Text = "Угол при вершине";
             // 
             // PlateForm
             // 

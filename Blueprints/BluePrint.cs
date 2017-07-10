@@ -8,12 +8,12 @@ namespace BluePrints
 {
     public abstract class BluePrint : Object
     {
-        protected bool Finishing { get; set; } //Выхаживание
-        protected String Name { get; set; }
+        protected bool _finishing; //Выхаживание
+        protected String _name;
 
         public override string ToString()
         {
-            return Name;
+            return _name;
         }
         
     }

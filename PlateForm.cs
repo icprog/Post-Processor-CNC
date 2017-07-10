@@ -17,47 +17,47 @@ namespace CNC
 {
     public partial class PlateForm : Form
     {
-        //Parameters
-        public decimal SideSize
+        //Public Parameters
+        public double SideSize
         {
             get
             {
-                return Convert.ToDecimal(numSideSize.Value);
+                return Convert.ToDouble(numSideSize.Value);
             }
         }
-        public decimal Radius
+        public double Radius
         {
             get
             {
-                return Convert.ToDecimal(cbRadius.SelectedItem);
+                return Convert.ToDouble(cbRadius.SelectedItem);
             }
         }
-        public decimal OverMeasure
+        public double OverMeasure
         {
             get
             {
-                return Convert.ToDecimal(numAllowance.Value);
+                return Convert.ToDouble(numAllowance.Value);
             }
         }
-        public decimal PlateExit
+        public double PlateExit
         {
             get
             {
-                return Convert.ToDecimal(numPlateExit.Value);
+                return Convert.ToDouble(numPlateExit.Value);
             }
         }
-        public decimal Passes
+        public double Passes
         {
             get
             {
-                return Convert.ToDecimal(numPasses.Value);
+                return Convert.ToDouble(numPasses.Value);
             }
         }
-        public decimal Discreteness
+        public double Discreteness
         {
             get
             {
-                return Convert.ToDecimal(cbDiscrete.SelectedItem);
+                return Convert.ToDouble(cbDiscrete.SelectedItem);
             }
         }
         public bool Finishing
@@ -67,19 +67,47 @@ namespace CNC
                 return checkFinishing.Checked;
             }
         }
-        
-        //Path
+        public double InitialX
+        {
+            get
+            {
+                return (double)numericX.Value;
+            }
+        }
+        public double InitialZ
+        {
+            get
+            {
+                return (double)numericZ.Value;
+            }
+        }
+        public double InitialA
+        {
+            get
+            {
+                return (double)numericA.Value;
+            }
+        }
+
+        //Private Parameters
+        private int PlateIndex
+        {
+            get
+            {
+                return comboBoxPlates.SelectedIndex;
+            }
+        }
         String path = "test.txt";
-        
+
         //Lists
         /// <summary>
         /// List of plate objects 
         /// </summary>
-        List<Plate> plateList = new List<Plate>();        
+        private List<Plate> plateList = new List<Plate>();       
         /// <summary>
         /// Discrete combobox items
         /// </summary>
-        List<double> discreteList = new List<double>()
+        private List<double> discreteList = new List<double>()
         {
             0.2,
             0.5,
@@ -88,7 +116,7 @@ namespace CNC
         /// <summary>
         /// Radius combobox items
         /// </summary>
-        List<double> radiusList = new List<double>()
+        private List<double> radiusList = new List<double>()
         {
             0.2,
             0.4,
@@ -101,28 +129,34 @@ namespace CNC
         {
             InitializeComponent();
             //Set the collections with items and styles for comboBoxes
-            comboBoxPlates.DataSource = plateList;
             cbRadius.DataSource = radiusList;
             cbDiscrete.DataSource = discreteList;
             cbDiscrete.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPlates.DropDownStyle = ComboBoxStyle.DropDownList;
             cbRadius.DropDownStyle = ComboBoxStyle.DropDownList;
+
             //Set the initial values of combo boxes
-            comboBoxPlates.SelectedIndex = 0;
             cbRadius.SelectedIndex = radiusList.IndexOf(0.8);
             cbDiscrete.SelectedIndex = discreteList.IndexOf(1);
 
             //Create instances for plates
-            plateList.Add(new OCN(this));
+            plateList.Add(new OCN());
+            //
+            //Set up plate comboBox
+            comboBoxPlates.DataSource = plateList;
+            comboBoxPlates.SelectedIndex = 0;
+            //
+            UpdatePlateParameters();
         }
 
         private void buttonGenerateCP_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream(path, FileMode.Create);
-            StreamWriter writer = new StreamWriter(fs);
-            CNCWriter CNC = new CNCWriter(writer);
+            this.Enabled = false;
+            Plate current = plateList[PlateIndex];
+            current.GetParametersFromForm(this);
+            current.WriteMetaCode(path);
 
-            
+            /*
             CNC.Append("R11", InputHelper.GetCBDouble(comboBoxPlates)); 
             CNC.Append("R21", numSideSize.Value);
             CNC.Append("R2", "R21/(SIN(R11))");
@@ -207,8 +241,19 @@ namespace CNC
             CNC.MCode(new object[] { 5, 9, 30 });                       
             //Close streams
             writer.Close();
-            fs.Close();
+            fs.Close();*/
             System.Diagnostics.Process.Start(path);
+            this.Enabled = true;
+        }
+
+        private void UpdatePlateParameters()
+        {
+            tbRadius.Text = plateList[PlateIndex].VertexAngle.ToString();
+        }
+
+        private void plateChanged(object sender, EventArgs e)
+        {
+            UpdatePlateParameters();
         }
     }
 }
