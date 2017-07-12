@@ -1,4 +1,5 @@
 ﻿using System;
+using CNC;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,19 @@ namespace BluePrints
         protected bool _finishing;
         //Выхаживание
         protected String _name;
+        protected abstract void MainCycleBody();
+
+        protected CNCWriter CNC;
+
+        protected void DoFinishing()
+        {
+            if (_finishing)
+            {
+                CNC.Comment("Выхаживание");
+                CNC.Move("z", -0.005, 2000);
+                MainCycleBody();
+            }
+        }
 
         public override string ToString()
         {

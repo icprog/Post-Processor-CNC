@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CNC;
 
-namespace BluePrints
+namespace BluePrints.Plates
 {
     class OCN : Plate
     {
@@ -16,6 +16,7 @@ namespace BluePrints
         public OCN()
         {
             _vertexAngle = 80;//make const
+            _processAngle = 80;
             _sideCount = 2;
             _name = "OCN (731)";
         }

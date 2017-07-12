@@ -269,6 +269,14 @@ namespace CNC
             FeedRate(rate);
             Inline();
         }
+
+        public void RapidMove(double angle)
+        {
+            Inline();
+            GCode(0);
+            Append("A", angle);
+            Inline();
+        }
         //----------------------------------
 
 

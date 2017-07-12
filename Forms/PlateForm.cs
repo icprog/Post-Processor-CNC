@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Helper;
-using BluePrints;
+using BluePrints.Plates;
 
 
 
@@ -97,7 +97,7 @@ namespace CNC
                 return comboBoxPlates.SelectedIndex;
             }
         }
-        String path = "test.txt";
+        String path = "test.txt"; //принесет илья
 
         //Lists
         /// <summary>
@@ -141,6 +141,7 @@ namespace CNC
 
             //Create instances for plates
             plateList.Add(new OCN());
+            plateList.Add(new OPN());
             //
             //Set up plate comboBox
             comboBoxPlates.DataSource = plateList;
