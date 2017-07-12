@@ -24,6 +24,10 @@ namespace BluePrints
         protected CNCWriter CNC;
 
         //Plate-defined parameters
+        protected abstract double R31();
+        protected abstract double R32();
+        protected abstract string R51();
+
         protected double _vertexAngle; //R1
         public double VertexAngle 
             {
@@ -33,17 +37,7 @@ namespace BluePrints
                 }
             }
         protected double _sideCount;
-        /*public double SideCount
-        {
-            get
-            {
-                return _sideCount;
-            }
-        } *///R8
-
-        //Plate-defined methods
-        protected abstract double R31();
-        protected abstract double R32();
+               
 
         public void GetParametersFromForm(PlateForm p)
         {
@@ -56,6 +50,7 @@ namespace BluePrints
             _initialX = p.InitialX;
             _initialZ = p.InitialZ;
             _initialA = p.InitialA;
+            _finishing = p.Finishing;
         }
 
         public void WriteMetaCode(String path)
@@ -95,6 +90,16 @@ namespace BluePrints
             SideCycle();
             CNC.Increment("GB");
             CNC.EndWhile();
+            if (_finishing)
+            {
+                CNC.Comment("Выхаживание");
+                CNC.Move("z", -0.005, 2000);
+                CNC.Append("zz", 0);
+                SideCycle();
+            }
+            CNC.MCode(5);
+            CNC.MCode(9);
+            CNC.MCode(30);
         }
 
         public void SideCycle()
@@ -104,17 +109,23 @@ namespace BluePrints
             CNC.Move("X", -_plateExit, 1000);
             CNC.Append("R41", 1);
             CNC.Append("R42", 0);
-            LastCycle();
+            RotationCycle();
             CNC.Move("x", _plateExit, 1000);
+            CNC.Inline();
             CNC.GCode(0);
             CNC.Echo("A80");//depends on something
+            CNC.Inline();
             CNC.Increment("ZZ");
             CNC.EndWhile();
         }
 
-        public void LastCycle()
+        public void RotationCycle()
         {
-            
+            CNC.While("R41<=100"); //100 depends on plate type
+            CNC.Append("R51", R51());
+            CNC.Move("Z", "R51-R42", "A", _discreteness.ToString(), 100);
+            CNC.Append("R42", "R51");
+            CNC.EndWhile();
         }
     }
 }

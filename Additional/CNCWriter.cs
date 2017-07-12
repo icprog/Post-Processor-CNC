@@ -16,7 +16,32 @@ namespace CNC
         /// Stream where meta-codes will be written
         /// </summary>
         private StreamWriter _stream;
-        private String _ending;
+        private String _ending
+        {
+            get
+            {
+                if (isInline)
+                    return " ";
+                else
+                {
+                    return "\r\n";
+                }
+            }
+        }
+        private String _tab
+        {
+            get
+            {
+                String tabulation = String.Empty;
+                if(!isInline)
+                    for (int i = 1; i < _tabCounter; i++) //GOVNOKOD
+                        tabulation += '\t';
+                return tabulation;
+            }
+        }
+        private int _tabCounter = 0;
+        private bool _isInline = false;
+
         /// <summary>
         /// Defines will the command switch to the next string after being writed
         /// </summary>
@@ -24,35 +49,31 @@ namespace CNC
         {
             get
             {
-                return (_ending != " ");
+                return _isInline;
             }
         }
                         
         public CNCWriter(StreamWriter stream)
         {
             _stream = stream;
-            _ending = "\r\n";
         }
 
         public CNCWriter(String path)
         {
             _stream = new StreamWriter(path);
-            _ending = "\r\n";
         }
 
         /// <summary>
         /// After set to 'true' all commands will no longer switch to the next string until it will be setted to 'false'
         /// </summary>
         /// <param name="inline"></param>
-        public void Inline(bool inline)
+        public void Inline()
         {
-            if (inline)
-                _ending = " ";
+            if (!isInline)
+                _stream.Write(_tab);
             else
-            {
-                _ending = "\r\n";
-                Write(String.Empty);
-            }
+                _stream.Write("\r\n");
+            _isInline = !_isInline;
         }
         /// <summary>
         /// Define REAL variable
@@ -60,9 +81,10 @@ namespace CNC
         /// <param name="var">Variable name</param>
         public void DefReal(String var)
         {
-            Write("DEF REAL " + var);
+            _Write("DEF REAL " + var);
         }
 
+        //-------------------------------Append and overloads
         /// <summary>
         /// Writes code which append string to variable
         /// </summary>
@@ -70,7 +92,7 @@ namespace CNC
         /// <param name="value">String to append</param>
         public void Append(String var, String value)
         {
-            Write(var.ToUpper() + "=" + FormatString(value));
+            _Write(var.ToUpper() + "=" + _FormatString(value));            
         }
 
         /// <summary>
@@ -80,9 +102,10 @@ namespace CNC
         /// <param name="value">Value to append (auto-formatted)</param>
         public void Append(String var, object value)
         {
-            value = FormatValue(value);
-            Write(var.ToUpper() + "=" + value.ToString());
+            value = _FormatValue(value);
+            _Write(var.ToUpper() + "=" + value.ToString());
         }
+        //-------------------------------
 
         /// <summary>
         /// Increments specified variable
@@ -91,15 +114,16 @@ namespace CNC
         /// <param name="value">Value to append (auto-formatted)</param>
         public void Increment(String var)
         {
-            Write(var.ToUpper() + "=" + var.ToUpper() + "1");
+            _Write(var.ToUpper() + "=" + var.ToUpper() + "+1");
         }
 
+        //-------------------------------MCode, Gcode and overloads
         /// <summary>
         /// Writes M-code in format "M+'number'"
         /// </summary>
         public void MCode(object number)
         {
-            Write("M" + number.ToString());
+            _Write("M" + number.ToString());
         }
 
         /// <summary>
@@ -111,15 +135,15 @@ namespace CNC
             String buf = String.Empty;
             for (int i = 0; i < number.Length; i++)
                 buf += "M" + number[i].ToString() + " ";
-            Write(buf);
+            _Write(buf);
         }
-
+        
         /// <summary>
         /// Writes G-code in format "G+'number'"
         /// </summary>
         public void GCode(object number)
         {
-            Write("G" + number.ToString());
+            _Write("G" + number.ToString());
         }
 
         /// <summary>
@@ -131,17 +155,19 @@ namespace CNC
             String buf = String.Empty;
             for (int i = 0; i < number.Length; i++)
                 buf += "G" + number[i].ToString() + " ";
-            Write(buf);
+            _Write(buf);
         }
-                
+        //-------------------------------
+        
         /// <summary>
         /// Specifies feedrate
         /// </summary>
         public void FeedRate(object number)
         {
-            Write("F" + number.ToString());
+            _Write("F" + number.ToString());
         }
 
+        //-------------------------------Move function and tons of its overloads
         /// <summary>
         /// Literally is the realisation the code like "G1 X Z A F%rate%"
         /// </summary>
@@ -149,15 +175,15 @@ namespace CNC
         /// <param name="z"></param>
         /// <param name="a"></param>
         /// <param name="rate"></param>
-        public void Move(double x, double z, double a, int rate)
+        public void Move(object x, object z, object a, int rate)
         {
-            Inline(true);
+            Inline();
             GCode(1);
             Append("X", x);
             Append("Z", z);
             Append("A", a);
             FeedRate(rate);
-            Inline(false);
+            Inline();
         }
 
         /// <summary>
@@ -167,13 +193,13 @@ namespace CNC
         /// <param name="z"></param>
         /// <param name="a"></param>
         /// <param name="rate"></param>
-        public void Move(string c1, double v1, int rate)
+        public void Move(string c1, object v1, int rate)
         {
-            Inline(true);
+            Inline();
             GCode(1);
             Append(c1, v1);
             FeedRate(rate);
-            Inline(false);
+            Inline();
         }
 
         /// <summary>
@@ -183,22 +209,76 @@ namespace CNC
         /// <param name="z"></param>
         /// <param name="a"></param>
         /// <param name="rate"></param>
-        public void Move(string c1, double v1, string c2, double v2, int rate)
+        public void Move(string c1, object v1, string c2, object v2, int rate)
         {
-            Inline(true);
+            Inline();
+            GCode(1);
+            Append((string)c1, v1);
+            Append((string)c2, v2);
+            FeedRate(rate);
+            Inline();
+        }
+
+        /// <summary>
+        /// Literally is the realisation the code like "G1 X Z A F%rate%"
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
+        /// <param name="a"></param>
+        /// <param name="rate"></param>
+        public void Move(string x, string z, string a, int rate)
+        {
+            Inline();
+            GCode(1);
+            Append("X", x);
+            Append("Z", z);
+            Append("A", a);
+            FeedRate(rate);
+            Inline();
+        }
+
+        /// <summary>
+        /// Literally is the realisation the code like "G1 Z F%rate%"
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
+        /// <param name="a"></param>
+        /// <param name="rate"></param>
+        public void Move(string c1, string v1, int rate)
+        {
+            Inline();
             GCode(1);
             Append(c1, v1);
-            Append(c2, v2);
             FeedRate(rate);
-            Inline(false);
+            Inline();
         }
+
+        /// <summary>
+        /// Literally is the realisation the code like "G1 Z A F%rate%"
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
+        /// <param name="a"></param>
+        /// <param name="rate"></param>
+        public void Move(string c1, string v1, string c2, string v2, int rate)
+        {
+            Inline();
+            GCode(1);
+            Append((string)c1, v1);
+            Append((string)c2, v2);
+            FeedRate(rate);
+            Inline();
+        }
+        //----------------------------------
+
 
         /// <summary>
         /// Specifies while cycle with condition
         /// </summary>
         public void While(String condition)
         {
-            Write("WHILE " + FormatString(condition.ToString()));
+            _tabCounter++;
+            _Write("WHILE " + _FormatString(condition.ToString()));
         }
 
         /// <summary>
@@ -206,7 +286,8 @@ namespace CNC
         /// </summary>
         public void EndWhile()
         {
-            Write("ENDWHILE");
+            _Write("ENDWHILE");
+            _tabCounter--;
         }
 
         /// <summary>
@@ -215,7 +296,16 @@ namespace CNC
         /// <param name="str"></param>
         public void Echo(object str)
         {
-            Write((str.ToString()).ToUpper());
+            _Write((str.ToString()).ToUpper());
+        }
+        
+        /// <summary>
+        /// Writes comment with a new string
+        /// </summary>
+        /// <param name="str"></param>
+        public void Comment(string str)
+        {
+            _Write("; " + str);
         }
 
         /// <summary>
@@ -225,6 +315,7 @@ namespace CNC
         {
             _stream.Close();
         }
+
         //---------------------------------------------------------------Private
 
         /// <summary>
@@ -232,7 +323,7 @@ namespace CNC
         /// </summary>
         /// <param name="value">Will be formatted aoutomatically</param>
         /// <returns></returns>
-        private double FormatValue(object value)
+        private double _FormatValue(object value)
         {
             return Math.Round(Convert.ToDouble(value), 3);
         }
@@ -242,19 +333,18 @@ namespace CNC
         /// </summary>
         /// <param name="str">String to format</param>
         /// <returns></returns>
-        private String FormatString(String str)
+        private String _FormatString(String str)
         {
             return (str.Replace(" ", "")).ToUpper();
         }
 
         /// <summary>
-        /// Writes with a new line or not depending on "Inline" value
+        /// Formats and writes str value in file
         /// </summary>
         /// <param name="str">String to write</param>
-        private void Write(String str)
-        {
-            _stream.Write(str + _ending);
-        }
-
+        private void _Write(String str)
+        {            
+            _stream.Write(_tab + str + _ending);
+        }        
     }
 }

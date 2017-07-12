@@ -22,15 +22,18 @@ namespace BluePrints
 
         protected override double R31()
         {
-            double buf1 = _sideSize / Math.Sin(_vertexAngle);
-            double buf2 = Math.Cos(_vertexAngle / 2) * Math.Sin(_vertexAngle / 2);
-            return buf1 * buf2 - _radius;
+            return _sideSize/2 - _radius;
         }
 
         protected override double R32()
         {
             double buf1 = Math.Tan(_vertexAngle / 2);
             return R31() / buf1;
+        }
+
+        protected override string R51()
+        {
+            return "R31-(SQRT(R31*R31+R32*R32))*(SIN(R41+R1/2))";
         }
     }
 }
