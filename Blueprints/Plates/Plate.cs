@@ -116,7 +116,7 @@ namespace BluePrints.Plates
             CNC.Append("R51", R51());
             CNC.Move("Z", "-(R51-R42)", "A", _discreteness.ToString(), 100);
             CNC.Append("R42", "R51");
-            CNC.Append("R1", "R1+" + _discreteness);
+            CNC.Increment("R41");
             CNC.EndWhile();
         }
     }

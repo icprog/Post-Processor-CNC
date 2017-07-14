@@ -3,33 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CNC;
+using BluePrints.Plates;
 
 namespace BluePrints.Plates
 {
-    class OCN : Plate
+    class RhombNarrow : Plate
     {
         /// <summary>
-        /// OCN plate instance
+        /// OPN plate instance
         /// </summary>
         /// <param name="form">Reference on the form containing common plate parameters</param>
-        public OCN()
+        public RhombNarrow()
         {
-            _vertexAngle = 80;//make const
-            _processAngle = 80;
+            _vertexAngle = 60;//make const
+            _processAngle = 60;
             _sideCount = 2;
-            _name = "OCN (731)";
+            _name = "Узкий ромб";
         }
 
         protected override double R31()
         {
-            return _sideSize/2 - _radius;
+            return (_sideSize / 2) * Math.Tan(30) - _radius;
         }
 
         protected override double R32()
         {
-            double buf1 = Math.Tan(_vertexAngle / 2);
-            return R31() / buf1;
+            return R31() * Math.Tan(60);
         }
 
         protected override string R51()

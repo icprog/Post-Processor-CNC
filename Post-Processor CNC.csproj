@@ -75,7 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blueprints\BluePrint.cs" />
-    <Compile Include="Blueprints\Plates\OPN.cs" />
+    <Compile Include="Blueprints\Plates\Pentagon.cs" />
+    <Compile Include="Blueprints\Plates\RhombNarrow.cs" />
     <Compile Include="Forms\PlateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,7 +87,7 @@
     <Compile Include="Settings\MachineParameters.cs" />
     <Compile Include="Additional\MathHelper.cs" />
     <Compile Include="Blueprints\Plates\Plate.cs" />
-    <Compile Include="Blueprints\Plates\OCN.cs" />
+    <Compile Include="Blueprints\Plates\RhombWide.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Additional\CNCWriter.cs" />

@@ -140,8 +140,9 @@ namespace CNC
             cbDiscrete.SelectedIndex = discreteList.IndexOf(1);
 
             //Create instances for plates
-            plateList.Add(new OCN());
-            plateList.Add(new OPN());
+            plateList.Add(new RhombWide());
+            plateList.Add(new Pentagon());
+            plateList.Add(new RhombNarrow());
             //
             //Set up plate comboBox
             comboBoxPlates.DataSource = plateList;
