@@ -23,6 +23,8 @@ namespace BluePrints.Plates
 
         //Plate-defined parameters
         protected double _vertexAngle; //R1
+        protected double _sideCount;
+        protected double _processAngle;
         public double VertexAngle
         {
             get
@@ -30,8 +32,6 @@ namespace BluePrints.Plates
                 return _vertexAngle;
             }
         }
-        protected double _sideCount;
-        protected double _processAngle;
 
 
         //Plate-defined methods
@@ -45,10 +45,7 @@ namespace BluePrints.Plates
             {
                 return Math.Round(R51(), 3);
             }
-        }
-
-        
-               
+        }                           
 
         public void GetParametersFromForm(PlateForm p)
         {

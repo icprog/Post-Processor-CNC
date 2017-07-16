@@ -29,43 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlateForm));
-            this.comboBoxPlates = new System.Windows.Forms.ComboBox();
+            this._platesCBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.numSideSize = new System.Windows.Forms.NumericUpDown();
-            this.cbRadius = new System.Windows.Forms.ComboBox();
+            this._sideSizeNum = new System.Windows.Forms.NumericUpDown();
+            this._radiusCBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbDiscrete = new System.Windows.Forms.ComboBox();
-            this.numPasses = new System.Windows.Forms.NumericUpDown();
+            this._discreteCBox = new System.Windows.Forms.ComboBox();
+            this._passesNum = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.numAllowance = new System.Windows.Forms.NumericUpDown();
+            this._allowanceNum = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericA = new System.Windows.Forms.NumericUpDown();
+            this._aNum = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericZ = new System.Windows.Forms.NumericUpDown();
+            this._zNum = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericX = new System.Windows.Forms.NumericUpDown();
+            this._xNum = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkFinishing = new System.Windows.Forms.CheckBox();
+            this._finichingCheck = new System.Windows.Forms.CheckBox();
             this.buttonGenerateCP = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.numPlateExit = new System.Windows.Forms.NumericUpDown();
+            this._plateExitNum = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.SketchBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numSideSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPasses)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAllowance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._sideSizeNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._passesNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._allowanceNum)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPlateExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._aNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._zNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._xNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._plateExitNum)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SketchBox)).BeginInit();
@@ -73,13 +73,13 @@
             // 
             // comboBoxPlates
             // 
-            this.comboBoxPlates.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comboBoxPlates.FormattingEnabled = true;
-            this.comboBoxPlates.Location = new System.Drawing.Point(0, 0);
-            this.comboBoxPlates.Name = "comboBoxPlates";
-            this.comboBoxPlates.Size = new System.Drawing.Size(424, 21);
-            this.comboBoxPlates.TabIndex = 0;
-            this.comboBoxPlates.SelectedIndexChanged += new System.EventHandler(this.plateChanged);
+            this._platesCBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this._platesCBox.FormattingEnabled = true;
+            this._platesCBox.Location = new System.Drawing.Point(0, 0);
+            this._platesCBox.Name = "comboBoxPlates";
+            this._platesCBox.Size = new System.Drawing.Size(424, 21);
+            this._platesCBox.TabIndex = 0;
+            this._platesCBox.SelectedIndexChanged += new System.EventHandler(this._PlateChanged);
             // 
             // label1
             // 
@@ -92,29 +92,24 @@
             // 
             // numSideSize
             // 
-            this.numSideSize.DecimalPlaces = 3;
-            this.numSideSize.Increment = new decimal(new int[] {
+            this._sideSizeNum.DecimalPlaces = 3;
+            this._sideSizeNum.Increment = new decimal(new int[] {
             1,
             0,
             0,
             196608});
-            this.numSideSize.Location = new System.Drawing.Point(104, 14);
-            this.numSideSize.Name = "numSideSize";
-            this.numSideSize.Size = new System.Drawing.Size(72, 20);
-            this.numSideSize.TabIndex = 2;
-            this.numSideSize.Value = new decimal(new int[] {
-            567,
-            0,
-            0,
-            131072});
+            this._sideSizeNum.Location = new System.Drawing.Point(104, 14);
+            this._sideSizeNum.Name = "numSideSize";
+            this._sideSizeNum.Size = new System.Drawing.Size(72, 20);
+            this._sideSizeNum.TabIndex = 2;
             // 
             // cbRadius
             // 
-            this.cbRadius.FormattingEnabled = true;
-            this.cbRadius.Location = new System.Drawing.Point(104, 41);
-            this.cbRadius.Name = "cbRadius";
-            this.cbRadius.Size = new System.Drawing.Size(72, 21);
-            this.cbRadius.TabIndex = 3;
+            this._radiusCBox.FormattingEnabled = true;
+            this._radiusCBox.Location = new System.Drawing.Point(104, 41);
+            this._radiusCBox.Name = "cbRadius";
+            this._radiusCBox.Size = new System.Drawing.Size(72, 21);
+            this._radiusCBox.TabIndex = 3;
             // 
             // label2
             // 
@@ -136,24 +131,24 @@
             // 
             // cbDiscrete
             // 
-            this.cbDiscrete.FormattingEnabled = true;
-            this.cbDiscrete.Location = new System.Drawing.Point(316, 40);
-            this.cbDiscrete.Name = "cbDiscrete";
-            this.cbDiscrete.Size = new System.Drawing.Size(72, 21);
-            this.cbDiscrete.TabIndex = 5;
+            this._discreteCBox.FormattingEnabled = true;
+            this._discreteCBox.Location = new System.Drawing.Point(316, 40);
+            this._discreteCBox.Name = "cbDiscrete";
+            this._discreteCBox.Size = new System.Drawing.Size(72, 21);
+            this._discreteCBox.TabIndex = 5;
             // 
             // numPasses
             // 
-            this.numPasses.Location = new System.Drawing.Point(316, 14);
-            this.numPasses.Minimum = new decimal(new int[] {
+            this._passesNum.Location = new System.Drawing.Point(316, 14);
+            this._passesNum.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numPasses.Name = "numPasses";
-            this.numPasses.Size = new System.Drawing.Size(72, 20);
-            this.numPasses.TabIndex = 8;
-            this.numPasses.Value = new decimal(new int[] {
+            this._passesNum.Name = "numPasses";
+            this._passesNum.Size = new System.Drawing.Size(72, 20);
+            this._passesNum.TabIndex = 8;
+            this._passesNum.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -170,22 +165,22 @@
             // 
             // numAllowance
             // 
-            this.numAllowance.DecimalPlaces = 2;
-            this.numAllowance.Increment = new decimal(new int[] {
+            this._allowanceNum.DecimalPlaces = 2;
+            this._allowanceNum.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.numAllowance.Location = new System.Drawing.Point(104, 68);
-            this.numAllowance.Maximum = new decimal(new int[] {
+            this._allowanceNum.Location = new System.Drawing.Point(104, 68);
+            this._allowanceNum.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numAllowance.Name = "numAllowance";
-            this.numAllowance.Size = new System.Drawing.Size(72, 20);
-            this.numAllowance.TabIndex = 10;
-            this.numAllowance.Value = new decimal(new int[] {
+            this._allowanceNum.Name = "numAllowance";
+            this._allowanceNum.Size = new System.Drawing.Size(72, 20);
+            this._allowanceNum.TabIndex = 10;
+            this._allowanceNum.Value = new decimal(new int[] {
             3,
             0,
             0,
@@ -202,11 +197,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numericA);
+            this.groupBox1.Controls.Add(this._aNum);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.numericZ);
+            this.groupBox1.Controls.Add(this._zNum);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.numericX);
+            this.groupBox1.Controls.Add(this._xNum);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(12, 515);
             this.groupBox1.Name = "groupBox1";
@@ -217,31 +212,26 @@
             // 
             // numericA
             // 
-            this.numericA.DecimalPlaces = 3;
-            this.numericA.Increment = new decimal(new int[] {
+            this._aNum.DecimalPlaces = 3;
+            this._aNum.Increment = new decimal(new int[] {
             1,
             0,
             0,
             196608});
-            this.numericA.Location = new System.Drawing.Point(207, 14);
-            this.numericA.Maximum = new decimal(new int[] {
+            this._aNum.Location = new System.Drawing.Point(207, 14);
+            this._aNum.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.numericA.Minimum = new decimal(new int[] {
+            this._aNum.Minimum = new decimal(new int[] {
             1000,
             0,
             0,
             -2147483648});
-            this.numericA.Name = "numericA";
-            this.numericA.Size = new System.Drawing.Size(60, 20);
-            this.numericA.TabIndex = 16;
-            this.numericA.Value = new decimal(new int[] {
-            91234546,
-            0,
-            0,
-            458752});
+            this._aNum.Name = "numericA";
+            this._aNum.Size = new System.Drawing.Size(60, 20);
+            this._aNum.TabIndex = 16;
             // 
             // label8
             // 
@@ -254,31 +244,26 @@
             // 
             // numericZ
             // 
-            this.numericZ.DecimalPlaces = 3;
-            this.numericZ.Increment = new decimal(new int[] {
+            this._zNum.DecimalPlaces = 3;
+            this._zNum.Increment = new decimal(new int[] {
             1,
             0,
             0,
             196608});
-            this.numericZ.Location = new System.Drawing.Point(29, 14);
-            this.numericZ.Maximum = new decimal(new int[] {
+            this._zNum.Location = new System.Drawing.Point(29, 14);
+            this._zNum.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.numericZ.Minimum = new decimal(new int[] {
+            this._zNum.Minimum = new decimal(new int[] {
             1000,
             0,
             0,
             -2147483648});
-            this.numericZ.Name = "numericZ";
-            this.numericZ.Size = new System.Drawing.Size(60, 20);
-            this.numericZ.TabIndex = 14;
-            this.numericZ.Value = new decimal(new int[] {
-            2023523,
-            0,
-            0,
-            393216});
+            this._zNum.Name = "numericZ";
+            this._zNum.Size = new System.Drawing.Size(60, 20);
+            this._zNum.TabIndex = 14;
             // 
             // label7
             // 
@@ -291,31 +276,26 @@
             // 
             // numericX
             // 
-            this.numericX.DecimalPlaces = 3;
-            this.numericX.Increment = new decimal(new int[] {
+            this._xNum.DecimalPlaces = 3;
+            this._xNum.Increment = new decimal(new int[] {
             1,
             0,
             0,
             196608});
-            this.numericX.Location = new System.Drawing.Point(118, 14);
-            this.numericX.Maximum = new decimal(new int[] {
+            this._xNum.Location = new System.Drawing.Point(118, 14);
+            this._xNum.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.numericX.Minimum = new decimal(new int[] {
+            this._xNum.Minimum = new decimal(new int[] {
             1000,
             0,
             0,
             -2147483648});
-            this.numericX.Name = "numericX";
-            this.numericX.Size = new System.Drawing.Size(60, 20);
-            this.numericX.TabIndex = 13;
-            this.numericX.Value = new decimal(new int[] {
-            234898,
-            0,
-            0,
-            393216});
+            this._xNum.Name = "numericX";
+            this._xNum.Size = new System.Drawing.Size(60, 20);
+            this._xNum.TabIndex = 13;
             // 
             // label6
             // 
@@ -328,13 +308,13 @@
             // 
             // checkFinishing
             // 
-            this.checkFinishing.AutoSize = true;
-            this.checkFinishing.Location = new System.Drawing.Point(221, 71);
-            this.checkFinishing.Name = "checkFinishing";
-            this.checkFinishing.Size = new System.Drawing.Size(96, 17);
-            this.checkFinishing.TabIndex = 12;
-            this.checkFinishing.Text = "Выхаживание";
-            this.checkFinishing.UseVisualStyleBackColor = true;
+            this._finichingCheck.AutoSize = true;
+            this._finichingCheck.Location = new System.Drawing.Point(221, 71);
+            this._finichingCheck.Name = "checkFinishing";
+            this._finichingCheck.Size = new System.Drawing.Size(96, 17);
+            this._finichingCheck.TabIndex = 12;
+            this._finichingCheck.Text = "Выхаживание";
+            this._finichingCheck.UseVisualStyleBackColor = true;
             // 
             // buttonGenerateCP
             // 
@@ -345,7 +325,7 @@
             this.buttonGenerateCP.TabIndex = 13;
             this.buttonGenerateCP.Text = "Создать УП";
             this.buttonGenerateCP.UseVisualStyleBackColor = true;
-            this.buttonGenerateCP.Click += new System.EventHandler(this.buttonGenerateCP_Click);
+            this.buttonGenerateCP.Click += new System.EventHandler(this._GenerateControlProgramm);
             // 
             // label9
             // 
@@ -376,17 +356,17 @@
             // 
             // numPlateExit
             // 
-            this.numPlateExit.DecimalPlaces = 2;
-            this.numPlateExit.Increment = new decimal(new int[] {
+            this._plateExitNum.DecimalPlaces = 2;
+            this._plateExitNum.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.numPlateExit.Location = new System.Drawing.Point(104, 96);
-            this.numPlateExit.Name = "numPlateExit";
-            this.numPlateExit.Size = new System.Drawing.Size(72, 20);
-            this.numPlateExit.TabIndex = 18;
-            this.numPlateExit.Value = new decimal(new int[] {
+            this._plateExitNum.Location = new System.Drawing.Point(104, 96);
+            this._plateExitNum.Name = "numPlateExit";
+            this._plateExitNum.Size = new System.Drawing.Size(72, 20);
+            this._plateExitNum.TabIndex = 18;
+            this._plateExitNum.Value = new decimal(new int[] {
             15,
             0,
             0,
@@ -414,21 +394,21 @@
             // 
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.numSideSize);
-            this.groupBox2.Controls.Add(this.numPlateExit);
-            this.groupBox2.Controls.Add(this.cbRadius);
+            this.groupBox2.Controls.Add(this._sideSizeNum);
+            this.groupBox2.Controls.Add(this._plateExitNum);
+            this.groupBox2.Controls.Add(this._radiusCBox);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.cbDiscrete);
+            this.groupBox2.Controls.Add(this._discreteCBox);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.numPasses);
-            this.groupBox2.Controls.Add(this.checkFinishing);
+            this.groupBox2.Controls.Add(this._passesNum);
+            this.groupBox2.Controls.Add(this._finichingCheck);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.numAllowance);
+            this.groupBox2.Controls.Add(this._allowanceNum);
             this.groupBox2.Location = new System.Drawing.Point(12, 382);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(400, 127);
@@ -463,21 +443,21 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonGenerateCP);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.comboBoxPlates);
+            this.Controls.Add(this._platesCBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "PlateForm";
             this.Text = "Пост-процессор ЧПУ";
-            ((System.ComponentModel.ISupportInitialize)(this.numSideSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPasses)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAllowance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._sideSizeNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._passesNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._allowanceNum)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPlateExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._aNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._zNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._xNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._plateExitNum)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -488,30 +468,30 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxPlates;
+        private System.Windows.Forms.ComboBox _platesCBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numSideSize;
-        private System.Windows.Forms.ComboBox cbRadius;
+        private System.Windows.Forms.NumericUpDown _sideSizeNum;
+        private System.Windows.Forms.ComboBox _radiusCBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbDiscrete;
-        private System.Windows.Forms.NumericUpDown numPasses;
+        private System.Windows.Forms.ComboBox _discreteCBox;
+        private System.Windows.Forms.NumericUpDown _passesNum;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numAllowance;
+        private System.Windows.Forms.NumericUpDown _allowanceNum;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkFinishing;
-        private System.Windows.Forms.NumericUpDown numericA;
+        private System.Windows.Forms.CheckBox _finichingCheck;
+        private System.Windows.Forms.NumericUpDown _aNum;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericZ;
+        private System.Windows.Forms.NumericUpDown _zNum;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericX;
+        private System.Windows.Forms.NumericUpDown _xNum;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonGenerateCP;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown numPlateExit;
+        private System.Windows.Forms.NumericUpDown _plateExitNum;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox2;

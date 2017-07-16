@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Post_Processor_CNC
 {
+    /// <summary>
+    /// Container for specific CNC Grinder parameters, such as axis names and directions
+    /// </summary>
     class MachineParameters
     {
         public bool isAxisReversed;        

@@ -22,92 +22,92 @@ namespace CNC
         {
             get
             {
-                return Convert.ToDouble(numSideSize.Value);
+                return Convert.ToDouble(_sideSizeNum.Value);
             }
         }
         public double Radius
         {
             get
             {
-                return Convert.ToDouble(cbRadius.SelectedItem);
+                return Convert.ToDouble(_radiusCBox.SelectedItem);
             }
         }
         public double OverMeasure
         {
             get
             {
-                return Convert.ToDouble(numAllowance.Value);
+                return Convert.ToDouble(_allowanceNum.Value);
             }
         }
         public double PlateExit
         {
             get
             {
-                return Convert.ToDouble(numPlateExit.Value);
+                return Convert.ToDouble(_plateExitNum.Value);
             }
         }
         public double Passes
         {
             get
             {
-                return Convert.ToDouble(numPasses.Value);
+                return Convert.ToDouble(_passesNum.Value);
             }
         }
         public double Discreteness
         {
             get
             {
-                return Convert.ToDouble(cbDiscrete.SelectedItem);
+                return Convert.ToDouble(_discreteCBox.SelectedItem);
             }
         }
         public bool Finishing
         {
             get
             {
-                return checkFinishing.Checked;
+                return _finichingCheck.Checked;
             }
         }
         public double InitialX
         {
             get
             {
-                return (double)numericX.Value;
+                return (double)_xNum.Value;
             }
         }
         public double InitialZ
         {
             get
             {
-                return (double)numericZ.Value;
+                return (double)_zNum.Value;
             }
         }
         public double InitialA
         {
             get
             {
-                return (double)numericA.Value;
+                return (double)_aNum.Value;
             }
         }
 
         //Private Parameters
-        private int PlateIndex
+        private int _plateIndex
         {
             get
             {
-                return comboBoxPlates.SelectedIndex;
+                return _platesCBox.SelectedIndex;
             }
         }
-        String path = "test.txt"; //принесет илья
+        private String _resultPath = "test.txt"; //принесет илья
 
         //Lists
         /// <summary>
         /// List of plate objects 
         /// </summary>
-        private List<Plate> plateList = new List<Plate>();       
+        private List<Plate> _plateList = new List<Plate>();       
         /// <summary>
         /// Discrete combobox items
         /// </summary>
-        private List<double> discreteList = new List<double>()
+        private List<double> _discreteList = new List<double>()
         {
             0.2,
             0.5,
@@ -116,7 +116,7 @@ namespace CNC
         /// <summary>
         /// Radius combobox items
         /// </summary>
-        private List<double> radiusList = new List<double>()
+        private List<double> _radiusList = new List<double>()
         {
             0.2,
             0.4,
@@ -129,41 +129,41 @@ namespace CNC
         {
             InitializeComponent();
             //Set the collections with items and styles for comboBoxes
-            cbRadius.DataSource = radiusList;
-            cbDiscrete.DataSource = discreteList;
-            cbDiscrete.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxPlates.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRadius.DropDownStyle = ComboBoxStyle.DropDownList;
+            _radiusCBox.DataSource = _radiusList;
+            _discreteCBox.DataSource = _discreteList;
+            _discreteCBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            _platesCBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            _radiusCBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
             //Set the initial values of combo boxes
-            cbRadius.SelectedIndex = radiusList.IndexOf(0.8);
-            cbDiscrete.SelectedIndex = discreteList.IndexOf(1);
+            _radiusCBox.SelectedIndex = _radiusList.IndexOf(0.8);
+            _discreteCBox.SelectedIndex = _discreteList.IndexOf(1);
 
             //Create instances for plates
-            plateList.Add(new RhombWide());
-            plateList.Add(new Pentagon());
-            plateList.Add(new RhombNarrow());
+            _plateList.Add(new RhombWide());
+            _plateList.Add(new Pentagon());
+            _plateList.Add(new RhombNarrow());
             //
             //Set up plate comboBox
-            comboBoxPlates.DataSource = plateList;
-            comboBoxPlates.SelectedIndex = 0;
+            _platesCBox.DataSource = _plateList;
+            _platesCBox.SelectedIndex = 0;
             //
-            UpdatePlateParameters();
+            _PlateChanged(new object(), new EventArgs());
         }
 
-        private void buttonGenerateCP_Click(object sender, EventArgs e)
+        private void _GenerateControlProgramm(object sender, EventArgs e)
         {
             this.Enabled = false;
-            Plate current = plateList[PlateIndex];
+            Plate current = _plateList[_plateIndex];
             current.GetParametersFromForm(this);
-            current.WriteMetaCode(path);
-            System.Diagnostics.Process.Start(path);
+            current.WriteMetaCode(_resultPath);
+            System.Diagnostics.Process.Start(_resultPath);
             this.Enabled = true;
         }
 
-        private void UpdatePlateParameters()
+        private void _UpdatePlateSketch()
         {
-            String imgName = plateList[PlateIndex].ToString() + ".png";
+            String imgName = _plateList[_plateIndex].ToString() + ".png";
             try
             {
                 SketchBox.Image = Image.FromFile("Images\\" + imgName);
@@ -174,9 +174,9 @@ namespace CNC
             }
         }
 
-        private void plateChanged(object sender, EventArgs e)
+        private void _PlateChanged(object sender, EventArgs e)
         {
-            UpdatePlateParameters();
+            _UpdatePlateSketch();
         }
     }
 }
