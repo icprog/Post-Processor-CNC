@@ -30,9 +30,11 @@ namespace BluePrints.Plates
             return _sideSize / 2 - _radius;
         }
 
-        protected override string R51()
+        protected override double R51()
         {
-            return "(R2*sin(r1))/4-R3-(SQRT (R31*R31+R32*R32))*(SIN(R41+R1/2))";
+            double buf1 = R31() - Math.Sqrt(R31() * R31() + R32() * R32());
+            double buf2 = (_sideSize * Math.Sin(_radius)) / 4;
+            return buf1-buf2;
         }
     }
 }

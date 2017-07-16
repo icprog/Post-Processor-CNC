@@ -31,9 +31,10 @@ namespace BluePrints.Plates
             return R31() * Math.Tan(60);
         }
 
-        protected override string R51()
+        protected override double R51()
         {
-            return "R31-(SQRT(R31*R31+R32*R32))*(SIN(R41+R1/2))";
+            double buf = Math.Sqrt(R31()*R31()+R32()*R32());
+            return R31()-buf;
         }
     }
 }

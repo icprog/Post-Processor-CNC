@@ -21,22 +21,33 @@ namespace BluePrints.Plates
         protected double _initialZ;
         protected double _initialA;
 
-
         //Plate-defined parameters
-        protected abstract double R31();
-        protected abstract double R32();
-        protected abstract string R51();
-
         protected double _vertexAngle; //R1
-        public double VertexAngle 
+        public double VertexAngle
+        {
+            get
             {
-                get
-                {
-                    return _vertexAngle;
-                }
+                return _vertexAngle;
             }
+        }
         protected double _sideCount;
         protected double _processAngle;
+
+
+        //Plate-defined methods
+        protected abstract double R31();
+        protected abstract double R32();
+        protected abstract double R51();
+
+        private double _result
+        {
+            get
+            {
+                return Math.Round(R51(), 3);
+            }
+        }
+
+        
                
 
         public void GetParametersFromForm(PlateForm p)
@@ -57,15 +68,19 @@ namespace BluePrints.Plates
         {
             CNC = new CNCWriter(path);
             WritePreset();
+
             CNC.GCode(90);
             CNC.Move(_initialX, _initialZ, _initialA, 2000);
             CNC.GCode(91);
+
             CNC.While("GB<" + _passes);
             CNC.Move("Z", _overMeasure, 2000);
             MainCycleBody();
             CNC.Increment("GB");
             CNC.EndWhile();
+
             DoFinishing();
+
             CNC.MCode(5);
             CNC.MCode(9);
             CNC.MCode(30);
@@ -80,7 +95,7 @@ namespace BluePrints.Plates
             CNC.MCode(3);
             CNC.MCode(8);
             CNC.GCode(64);
-            CNC.Append("R1", _vertexAngle);
+           /* CNC.Append("R1", _vertexAngle);
             CNC.Append("R2", _sideSize);
             CNC.Append("R3", _radius);
             CNC.Append("R31", R31());
@@ -88,7 +103,7 @@ namespace BluePrints.Plates
             CNC.Append("R4", _discreteness);
             CNC.Append("R5", _passes);
             CNC.Append("R6", _overMeasure);
-            CNC.Append("R7", _plateExit);
+            CNC.Append("R7", _plateExit);*/
         }
 
         protected override void MainCycleBody()
@@ -113,7 +128,7 @@ namespace BluePrints.Plates
         public void RotationCycle()
         {
             CNC.While("R41<="+(180-_vertexAngle)); //100 depends on plate type
-            CNC.Append("R51", R51());
+            CNC.Append("R51", _result + "*(SIN(R41+" + _vertexAngle / 2 + "))");
             CNC.Move("Z", "-(R51-R42)", "A", _discreteness.ToString(), 100);
             CNC.Append("R42", "R51");
             CNC.Increment("R41");

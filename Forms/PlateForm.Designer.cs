@@ -56,10 +56,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.tbRadius = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.SketchBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numSideSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPasses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAllowance)).BeginInit();
@@ -69,7 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPlateExit)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SketchBox)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxPlates
@@ -209,7 +208,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.numericX);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(12, 208);
+            this.groupBox1.Location = new System.Drawing.Point(12, 515);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(400, 44);
             this.groupBox1.TabIndex = 11;
@@ -340,7 +339,7 @@
             // buttonGenerateCP
             // 
             this.buttonGenerateCP.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonGenerateCP.Location = new System.Drawing.Point(0, 259);
+            this.buttonGenerateCP.Location = new System.Drawing.Point(0, 563);
             this.buttonGenerateCP.Name = "buttonGenerateCP";
             this.buttonGenerateCP.Size = new System.Drawing.Size(424, 30);
             this.buttonGenerateCP.TabIndex = 13;
@@ -430,57 +429,37 @@
             this.groupBox2.Controls.Add(this.checkFinishing);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.numAllowance);
-            this.groupBox2.Location = new System.Drawing.Point(12, 75);
+            this.groupBox2.Location = new System.Drawing.Point(12, 382);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(400, 127);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Параметры";
             // 
-            // groupBox3
+            // groupBox4
             // 
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.tbRadius);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Location = new System.Drawing.Point(12, 27);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(400, 42);
-            this.groupBox3.TabIndex = 21;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Свойства пластины";
+            this.groupBox4.Controls.Add(this.SketchBox);
+            this.groupBox4.Location = new System.Drawing.Point(12, 28);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(400, 348);
+            this.groupBox4.TabIndex = 22;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Эскиз";
             // 
-            // label16
+            // SketchBox
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(182, 16);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(11, 13);
-            this.label16.TabIndex = 20;
-            this.label16.Text = "°";
-            // 
-            // tbRadius
-            // 
-            this.tbRadius.Enabled = false;
-            this.tbRadius.Location = new System.Drawing.Point(138, 13);
-            this.tbRadius.Name = "tbRadius";
-            this.tbRadius.Size = new System.Drawing.Size(38, 20);
-            this.tbRadius.TabIndex = 21;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 16);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 13);
-            this.label15.TabIndex = 22;
-            this.label15.Text = "Угол при вершине";
+            this.SketchBox.Location = new System.Drawing.Point(7, 19);
+            this.SketchBox.Name = "SketchBox";
+            this.SketchBox.Size = new System.Drawing.Size(387, 324);
+            this.SketchBox.TabIndex = 0;
+            this.SketchBox.TabStop = false;
             // 
             // PlateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 289);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(424, 593);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonGenerateCP);
             this.Controls.Add(this.groupBox1);
@@ -501,8 +480,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPlateExit)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SketchBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -536,10 +515,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox tbRadius;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.PictureBox SketchBox;
     }
 }
 

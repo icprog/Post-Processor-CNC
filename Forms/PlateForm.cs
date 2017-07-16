@@ -163,7 +163,15 @@ namespace CNC
 
         private void UpdatePlateParameters()
         {
-            tbRadius.Text = plateList[PlateIndex].VertexAngle.ToString();
+            String imgName = plateList[PlateIndex].ToString() + ".png";
+            try
+            {
+                SketchBox.Image = Image.FromFile("Images\\" + imgName);
+            }
+            catch
+            {
+                SketchBox.Image = SketchBox.ErrorImage;
+            }
         }
 
         private void plateChanged(object sender, EventArgs e)
