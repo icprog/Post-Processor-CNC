@@ -64,7 +64,7 @@ namespace CNC
         {
             get
             {
-                return _finichingCheck.Checked;
+                return _finishingCheck.Checked;
             }
         }
         public double InitialX
@@ -177,6 +177,12 @@ namespace CNC
         private void _PlateChanged(object sender, EventArgs e)
         {
             _UpdatePlateSketch();
+        }
+
+        private void PlateForm_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            tabControl1.Region = new Region(tabControl1.DisplayRectangle);
         }
     }
 }
