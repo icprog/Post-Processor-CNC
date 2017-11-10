@@ -172,17 +172,102 @@ namespace CNC
             {
                 SketchBox.Image = SketchBox.ErrorImage;
             }
+            SketchBox2.Image = SketchBox.Image;
+            SketchBox3.Image = SketchBox.Image;
         }
 
         private void _PlateChanged(object sender, EventArgs e)
         {
             _UpdatePlateSketch();
+            groupBoxTotal.Text = _plateList[_plateIndex].ToString();
         }
 
         private void PlateForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
             tabControl1.Region = new Region(tabControl1.DisplayRectangle);
+        }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+            if(tabControl1.SelectedIndex == 0)
+            {
+                buttonPrev.Visible = false;
+                buttonGenerateCP.Visible = false;
+                buttonNext.Visible = true;
+            }
+            else if(tabControl1.SelectedIndex == 4)
+            {
+                buttonPrev.Visible = true;
+                buttonGenerateCP.Visible = true;
+                buttonNext.Enabled = true; //
+            }
+            else
+            {
+                buttonPrev.Visible = true;
+                buttonGenerateCP.Visible = false;
+                buttonNext.Visible = true;
+            }
+        }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex++;
+        }
+
+        private void buttonPrev_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex--;
+        }
+
+        private void _sideSizeNum_ValueChanged(object sender, EventArgs e)
+        {
+            sideTotal.Value = _sideSizeNum.Value;
+        }
+
+        private void _radiusCBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            radiusTotal.SelectedItem = _radiusCBox.SelectedItem;
+        }
+
+        private void _allowanceNum_ValueChanged(object sender, EventArgs e)
+        {
+            allowanceTotal.Value = _allowanceNum.Value;
+        }
+
+        private void _plateExitNum_ValueChanged(object sender, EventArgs e)
+        {
+            exitTotal.Value = _plateExitNum.Value;
+        }
+
+        private void _passesNum_ValueChanged(object sender, EventArgs e)
+        {
+            passesTotal.Value = _passesNum.Value;
+        }
+
+        private void _discreteCBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //discreteTotal.SelectedIndex = _discreteCBox.SelectedIndex;
+        }
+
+        private void _finishingCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            checkTotal.Checked = _finishingCheck.Checked;
+        }
+
+        private void _zNum_ValueChanged(object sender, EventArgs e)
+        {
+            ZTotal.Value = _zNum.Value;
+        }
+
+        private void _xNum_ValueChanged(object sender, EventArgs e)
+        {
+            XTotal.Value = _xNum.Value;
+        }
+
+        private void _aNum_ValueChanged(object sender, EventArgs e)
+        {
+            ATotal.Value = _aNum.Value;
         }
     }
 }
