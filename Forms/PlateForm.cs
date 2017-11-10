@@ -157,7 +157,7 @@ namespace CNC
             Plate current = _plateList[_plateIndex];
             current.GetParametersFromForm(this);
             current.WriteMetaCode(_resultPath);
-            System.Diagnostics.Process.Start(_resultPath);
+            //System.Diagnostics.Process.Start(_resultPath);
             this.Enabled = true;
             richTextBox1.Text = File.ReadAllText(_resultPath);
             tabControl1.SelectedIndex++;

@@ -64,17 +64,21 @@ namespace BluePrints.Plates
         public void WriteMetaCode(String path)
         {
             CNC = new CNCWriter(path);
-            WritePreset();
+            WritePreset();         
+
 
             CNC.GCode(90);
             CNC.Move(_initialX, _initialZ, _initialA, 2000);
             CNC.GCode(91);
 
-            CNC.While("GB<" + _passes);
-            CNC.Move("Z", _overMeasure, 2000);
-            MainCycleBody();
-            CNC.Increment("GB");
-            CNC.EndWhile();
+            //CNC.While("GB<" + _passes); 
+            for (int gb = 0; gb < _passes; gb++)
+            {
+                CNC.Move("Z", _overMeasure, 2000);
+                MainCycleBody();
+                /*CNC.Increment("GB");
+                CNC.EndWhile();*/
+            }
 
             DoFinishing();
 
@@ -105,31 +109,37 @@ namespace BluePrints.Plates
 
         protected override void MainCycleBody()
         {
-            CNC.Append("ZZ", 0);
+           // CNC.Append("ZZ", 0);
             SideCycle();
         }
 
         public void SideCycle()
         {
-            CNC.While("ZZ<" + _sideCount);
-            CNC.Move("X", -_plateExit, 1000);
-            CNC.Append("R41", 1);
-            CNC.Append("R42", 0);
-            RotationCycle();
-            CNC.Move("x", _plateExit, 1000);
-            CNC.RapidMove(_processAngle);
-            CNC.Increment("ZZ");
-            CNC.EndWhile();
+            //CNC.While("ZZ<" + _sideCount);
+            for (int zz = 0; zz < _sideCount; zz++)
+            {
+                CNC.Move("X", -_plateExit, 1000);
+                CNC.Append("R41", 1);
+                CNC.Append("R42", 0);
+                RotationCycle();
+                CNC.Move("x", _plateExit, 1000);
+                CNC.RapidMove(_processAngle);
+                /*CNC.Increment("ZZ");
+                CNC.EndWhile();*/
+            }
         }
 
         public void RotationCycle()
         {
-            CNC.While("R41<="+(180-_vertexAngle)); //100 depends on plate type
-            CNC.Append("R51", _result + "*(SIN(R41+" + _vertexAngle / 2 + "))");
-            CNC.Move("Z", "-(R51-R42)", "A", _discreteness.ToString(), 100);
-            CNC.Append("R42", "R51");
-            CNC.Increment("R41");
-            CNC.EndWhile();
+            //CNC.While("R41<="+(180-_vertexAngle)); //100 depends on plate type
+            for (int r41 = 0; r41 <= 180 - _vertexAngle; r41++)
+            {
+                CNC.Append("R51", _result + "*(SIN(R41+" + _vertexAngle / 2 + "))");
+                CNC.Move("Z", "-(R51-R42)", "A", _discreteness.ToString(), 100);
+                CNC.Append("R42", "R51");
+                /*CNC.Increment("R41");
+                CNC.EndWhile();*/
+            }
         }
     }
 }
