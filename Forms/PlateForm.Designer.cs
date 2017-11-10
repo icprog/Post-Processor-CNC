@@ -101,10 +101,11 @@
             this.groupBoxTotal = new System.Windows.Forms.GroupBox();
             this.SketchBox3 = new System.Windows.Forms.PictureBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonPrev = new System.Windows.Forms.Button();
+            this.buttonLoadCP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._sideSizeNum)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._aNum)).BeginInit();
@@ -301,13 +302,13 @@
             // buttonGenerateCP
             // 
             this.buttonGenerateCP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonGenerateCP.Location = new System.Drawing.Point(363, 382);
+            this.buttonGenerateCP.Enabled = false;
+            this.buttonGenerateCP.Location = new System.Drawing.Point(430, 382);
             this.buttonGenerateCP.Name = "buttonGenerateCP";
-            this.buttonGenerateCP.Size = new System.Drawing.Size(336, 30);
+            this.buttonGenerateCP.Size = new System.Drawing.Size(269, 30);
             this.buttonGenerateCP.TabIndex = 13;
             this.buttonGenerateCP.Text = "Создать УП";
             this.buttonGenerateCP.UseVisualStyleBackColor = true;
-            this.buttonGenerateCP.Visible = false;
             this.buttonGenerateCP.Click += new System.EventHandler(this._GenerateControlProgramm);
             // 
             // label9
@@ -1098,14 +1099,26 @@
             // 
             this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage6.Controls.Add(this.richTextBox1);
             this.tabPage6.Controls.Add(this.textBox6);
-            this.tabPage6.Controls.Add(this.groupBox6);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage6.Size = new System.Drawing.Size(791, 338);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "tabPage6";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.Location = new System.Drawing.Point(6, 25);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(777, 305);
+            this.richTextBox1.TabIndex = 26;
+            this.richTextBox1.Text = "";
             // 
             // textBox6
             // 
@@ -1121,18 +1134,6 @@
             this.textBox6.Text = "Управляющая программа";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Location = new System.Drawing.Point(239, 39);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(304, 291);
-            this.groupBox6.TabIndex = 22;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Эскиз";
-            // 
             // buttonNext
             // 
             this.buttonNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1147,7 +1148,7 @@
             // buttonPrev
             // 
             this.buttonPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonPrev.Location = new System.Drawing.Point(12, 382);
+            this.buttonPrev.Location = new System.Drawing.Point(16, 382);
             this.buttonPrev.Name = "buttonPrev";
             this.buttonPrev.Size = new System.Drawing.Size(102, 30);
             this.buttonPrev.TabIndex = 25;
@@ -1156,11 +1157,23 @@
             this.buttonPrev.Visible = false;
             this.buttonPrev.Click += new System.EventHandler(this.buttonPrev_Click);
             // 
+            // buttonLoadCP
+            // 
+            this.buttonLoadCP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonLoadCP.Enabled = false;
+            this.buttonLoadCP.Location = new System.Drawing.Point(124, 382);
+            this.buttonLoadCP.Name = "buttonLoadCP";
+            this.buttonLoadCP.Size = new System.Drawing.Size(269, 30);
+            this.buttonLoadCP.TabIndex = 26;
+            this.buttonLoadCP.Text = "Загрузить УП";
+            this.buttonLoadCP.UseVisualStyleBackColor = true;
+            // 
             // PlateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 442);
+            this.Controls.Add(this.buttonLoadCP);
             this.Controls.Add(this.buttonPrev);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.tabControl1);
@@ -1264,7 +1277,6 @@
         private System.Windows.Forms.NumericUpDown _allowanceNum;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.ComboBox _platesCBox;
@@ -1297,6 +1309,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button buttonLoadCP;
     }
 }
 

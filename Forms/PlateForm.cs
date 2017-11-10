@@ -129,8 +129,8 @@ namespace CNC
         {
             InitializeComponent();
             //Set the collections with items and styles for comboBoxes
-            _radiusCBox.DataSource = _radiusList;
-            _discreteCBox.DataSource = _discreteList;
+            _radiusCBox.DataSource = radiusTotal.DataSource = _radiusList;
+            _discreteCBox.DataSource = discreteTotal.DataSource = _discreteList;
             _discreteCBox.DropDownStyle = ComboBoxStyle.DropDownList;
             _platesCBox.DropDownStyle = ComboBoxStyle.DropDownList;
             _radiusCBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -159,6 +159,8 @@ namespace CNC
             current.WriteMetaCode(_resultPath);
             System.Diagnostics.Process.Start(_resultPath);
             this.Enabled = true;
+            richTextBox1.Text = File.ReadAllText(_resultPath);
+            tabControl1.SelectedIndex++;
         }
 
         private void _UpdatePlateSketch()
@@ -193,20 +195,31 @@ namespace CNC
             if(tabControl1.SelectedIndex == 0)
             {
                 buttonPrev.Visible = false;
-                buttonGenerateCP.Visible = false;
+                buttonGenerateCP.Enabled = false;
                 buttonNext.Visible = true;
+                buttonLoadCP.Enabled = false;
             }
             else if(tabControl1.SelectedIndex == 4)
             {
                 buttonPrev.Visible = true;
-                buttonGenerateCP.Visible = true;
-                buttonNext.Enabled = true; //
+                buttonGenerateCP.Enabled = true;
+                buttonNext.Visible = true;
+                buttonNext.Enabled = (richTextBox1.Text == String.Empty) ? false : true; //
+                buttonLoadCP.Enabled = false;
+            }
+            else if(tabControl1.SelectedIndex == 5)
+            {
+                buttonPrev.Visible = true;
+                buttonGenerateCP.Enabled = false;
+                buttonNext.Visible = false;
+                buttonLoadCP.Enabled = true;
             }
             else
             {
                 buttonPrev.Visible = true;
-                buttonGenerateCP.Visible = false;
+                buttonGenerateCP.Enabled = false;
                 buttonNext.Visible = true;
+                buttonLoadCP.Enabled = false;
             }
         }
 
@@ -247,7 +260,7 @@ namespace CNC
 
         private void _discreteCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //discreteTotal.SelectedIndex = _discreteCBox.SelectedIndex;
+            discreteTotal.SelectedIndex = _discreteCBox.SelectedIndex;
         }
 
         private void _finishingCheck_CheckedChanged(object sender, EventArgs e)
